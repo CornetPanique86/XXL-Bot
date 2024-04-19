@@ -1,20 +1,21 @@
 {
-  "name": "xxlbot",
+  "name": "xxl-bot",
   "version": "1.0.0",
-  "description": "XXL Bot discord code",
+  "description": "XXL Bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "deploycmd": "node deploy-commands.js",
-    "create": "node create.js"
+    "deploycmd": "node deploy-commands.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "XXLSteve",
+  "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.7.1"
+    "@discordjs/voice": "^0.16.1",
+    "discord.js": "^14.14.1",
+    "libsodium-wrappers": "^0.7.13"
   },
   "devDependencies": {
-    "eslint": "^8.34.0"
+    "eslint": "^9.0.0"
   }
 }
