@@ -53,8 +53,7 @@ function getRandomAudio() {
 function playRandomMusic() {
 	const music = getRandomAudio();
 	module.exports.nowplaying = music;
-	notPlayed.filter(item => item !== music); // Remove the music from array
-	console.log(path.join(musicPath, music.artist, music.title + ".ogg"));
+	notPlayed.splice(notPlayed.indexOf(music), 1); // Remove the music from array
 	return Voice.createAudioResource(path.join(musicPath, music.artist, music.title + ".ogg"), {
 		inputType: Voice.StreamType.OggOpus,
 	});
