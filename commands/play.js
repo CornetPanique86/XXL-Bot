@@ -2,7 +2,9 @@ const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const Voice = require('@discordjs/voice');
 const fs = require('fs');
 const path = require('path');
+const fetch = require('node-fetch');
 
+const url = 'http://127.0.0.1:19134/message'; // Replace with the BDSX server's URL
 
 const musicPath = path.join(__dirname, "..", "music");
 const allMusic = getFilesFromDir(musicPath);
@@ -60,8 +62,24 @@ function playRandomMusic() {
 }
 
 player.on(Voice.AudioPlayerStatus.Idle, () => {
-	setTimeout(() => {
+	setTimeout(async () => {
 		player.play(playRandomMusic());
+
+		try {
+			const response = await fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(module.exports.nowplaying),
+			});
+	
+			if (!response.ok) {
+				throw new Error(`HTTP request failed with status ${response.status}`);
+			}
+		} catch (error) {
+			console.error('Error sending HTTP request to BDSX server:', error);
+		}
 	}, 2_500);
 });
 player.on(Voice.AudioPlayerStatus.AutoPaused, () => {

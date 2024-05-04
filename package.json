@@ -4,7 +4,7 @@
   "description": "XXL Bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./test.js",
     "start": "node .",
     "deploycmd": "node deploy-commands.js"
   },
@@ -13,7 +13,8 @@
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
     "discord.js": "^14.14.1",
-    "libsodium-wrappers": "^0.7.13"
+    "libsodium-wrappers": "^0.7.13",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "eslint": "^9.0.0"
